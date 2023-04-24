@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>SHOW</title>
+  <style>
+ form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        input[type="submit"],input[type="button"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="submit"],input[type="button"]:hover {
+        background-color: #3e8e41;
+      }
+        
+input[type="reset"] {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+input[type="reset"]:hover {
+  background-color: #d32f2f;
+}
+    
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin:  4px 2px ;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<form action="/showsearch">
+
+    <label for="id">Search Student By ID</label>
+    <input type="text" id="id" name="id" placeholder="INPUT ID HERH" required>
+
+    <input type="submit" value="SEARCH">
+    <input type="reset" value="RESET" >
+   <input type="button" value="Add Student" onclick="window.location.href='showinsert'">
+</form>
+  <h2>Student Informatiom  </h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Option</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in content %}
+        <tr>
+          <td>{{ i[0] }}</td>
+          <td>{{ i[1] }}</td>
+          <td>{{ i[2] }}</td>
+          <td><a href="/showdelete?id={{ i[0] }}"><button>Delete</button></a></td>
+          <td><a href="/showupdate?id={{ i[0] }}"><button>Update</button></a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+ 
+</body>
+</html>

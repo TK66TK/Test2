@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>UPDATE</title>
+    <style>
+        /* 样式表 */
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+ 
+	input[type="button"] {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+input[type="button"]:hover {
+  background-color: #d32f2f;
+}
+      h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Edit student information</h1>
+
+<form action="/subupdate" method="POST">
+    <label for="id2">ID</label>
+  {% for i in content %}
+    <input type="text" id="id" name="id2" value="{{i[0]}}" required>
+  {% endfor %}
+    <label for="name">NAME</label>
+  {% for i in content %}
+    <input type="text" id="name" name="name" value="{{i[1]}}" required>
+  {% endfor %}
+    <label for="birth">BIRTH</label>
+  {% for i in content %}
+    <input type="date" id="birth" name="birth" value="{{i[2]}}"required>
+    <input type="hidden"  name="id" value="{{ i[0] }}"required>
+  {% endfor %}
+    <input type="submit" value="SUBMIT">
+    <input type="button" value="CANCEL" onclick="window.location.href='/'">
+</form>
+
+</body>
+</html>

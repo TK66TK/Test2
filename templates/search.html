@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SEARCH</title>
+    <style>
+        /* 样式表 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            background-color: #fff;
+            width: 80%;
+            max-width: 960px;
+            margin-top: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        input[type="button"] {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        input[type="button"]:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Students</h1>
+
+<table>
+    <thead>
+    <tr>
+        {% for i in labels %}
+        <th>{{ i }}</th>
+        {% endfor %}
+        <th>OPTION</th>
+        <th>OPTION</th>
+   </tr>
+    </thead>
+    <tbody>
+    {% for i in content %}
+    <tr>
+       <tr>
+          <td>{{ i[0] }}</td>
+          <td>{{ i[1] }}</td>
+          <td>{{ i[2] }}</td>
+          <td><a href="/showdelete?id={{ i[0] }}"><button>Delete</button></a></td>
+          <td><a href="/showupdate?id={{ i[0] }}"><button>Update</button></a></td>
+        </tr>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+<input type="button" value="CANCEL" onclick="window.location.href='/'">
+
+</body>
+</html>
+
